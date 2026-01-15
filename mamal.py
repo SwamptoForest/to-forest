@@ -1,7 +1,9 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
-plt.rcParams['font.family'] = 'Malgun Gothic'
+import platform
+#폰트 인식 못해서 수정함
+plt.rcParams['font.family'] = 'NanumGothic'
 plt.rcParams['axes.unicode_minus'] = False
 
 st.set_page_config(layout="wide")
@@ -41,7 +43,7 @@ with col2:
     fig, ax = plt.subplots(figsize=(10, 6))
     ax.bar(df['국가_세로'], df['진출 확률(%)'], color='#ff4b4b')
     y_label = "진\n출\n확\n률\n(%)"
-    ax.set_ylabel(y_label, rotation=0, labelpad=30, verticalalignment='center') # 축 이름도 세로로!
+    ax.set_ylabel(y_label, rotation=0, labelpad=30, verticalalignment='center') # 축 이름도 세로로
     st.pyplot(fig, use_container_width=True)
 
 # [수정] 국가명 (단위 없이 이름만 세로로)
