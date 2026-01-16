@@ -132,18 +132,53 @@ df['국가_세로'] = df['국가'].apply(lambda x: '\n'.join(list(x)))
 
 # 특정 국가 검색 기능
 st.divider()
-st.header(" 💪국가별 핵심 선수💥💫 ")
+st.header(" 💪국가별 핵심 선수💥💫 ") #제미나이가 확률만 반복해서 에이스로 바꿈
 
 ace_players = {
     "대한민국": {
         "name": "손흥민", 
         "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Son_Heung-min_in_2019.jpg/250px-Son_Heung-min_in_2019.jpg"
     },
-    "조조": {
+    "중국": {
         "name": "하후돈", 
         "photo": "https://via.placeholder.com/150?text=HaHuDon" 
     },
-   
+   "일본": {
+        "name": "미토마 카오루", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Kaoru_Mitoma_2022.jpg/250px-Kaoru_Mitoma_2022.jpg"
+    },
+    "아르헨티나": {
+        "name": "리오넬 메시", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b4/Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg/250px-Lionel-Messi-Argentina-2022-FIFA-World-Cup_%28cropped%29.jpg"
+    },
+    "포르투갈": {
+        "name": "크리스티아누 호날두", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Cristiano_Ronaldo_playing_for_Al_Nassr_FC_against_Persepolis%2C_September_2023_%28cropped%29.jpg/250px-Cristiano_Ronaldo_playing_for_Al_Nassr_FC_against_Persepolis%2C_September_2023_%28cropped%29.jpg"
+    },
+    "프랑스": {
+        "name": "킬리안 음바페", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/57/2019-07-17_SG_Dynamo_Dresden_vs._Paris_Saint-Germain_by_Sandro_Halank%E2%80%93129_%28cropped%29.jpg/250px-2019-07-17_SG_Dynamo_Dresden_vs._Paris_Saint-Germain_by_Sandro_Halank%E2%80%93129_%28cropped%29.jpg"
+    },
+    "브라질": {
+        "name": "비니시우스 주니오르", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Vinicius_Jr_2021.jpg/250px-Vinicius_Jr_2021.jpg"
+    },
+    "잉글랜드": {
+        "name": "해리 케인", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Harry_Kane_2018.jpg/250px-Harry_Kane_2018.jpg"
+    },
+    "독일": {
+        "name": "자말 무시알라", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Jamal_Musiala_2022.jpg/250px-Jamal_Musiala_2022.jpg"
+    },
+    "스페인": {
+        "name": "로드리", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Rodri_2021.jpg/250px-Rodri_2021.jpg"
+    },
+    "벨기에": {
+        "name": "케빈 더 브라위너", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Kevin_De_Bruyne_2018.jpg/250px-Kevin_De_Bruyne_2018.jpg"
+    }
 }
 
 target_team = st.selectbox("어떤 팀의 에이스가 궁금해?", df["국가"].unique())
@@ -215,6 +250,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
