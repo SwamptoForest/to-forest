@@ -1,4 +1,7 @@
 import streamlit as st
+import requests # 선수 사진이 자꾸 엑박이라서 제미나이를 압박했더니 해결책이라고 준 것.
+from PIL import Image # 엑박 해결용 2
+from io import BytesIO # 엑박 해결용 3
 import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
@@ -131,6 +134,16 @@ else:
 df['국가_세로'] = df['국가'].apply(lambda x: '\n'.join(list(x)))
 
 # 특정 국가 검색 기능
+def load_image(url):
+    try:
+        # "나 봇 아니고 윈도우 쓰는 사람이야~"라고 속이는 명찰(Header)
+        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+        response = requests.get(url, headers=headers)
+        img = Image.open(BytesIO(response.content))
+        return img
+    except Exception as e:
+        return None # 실패하면 아무것도 안 돌려줌
+
 st.divider()
 st.header(" 💪국가별 핵심 선수💥💫 ") #제미나이가 확률만 반복해서 에이스로 바꿈
 
@@ -194,19 +207,23 @@ target_team = st.selectbox("어떤 팀의 에이스가 궁금해?", df["국가"]
 if target_team in ace_players:
     player = ace_players[target_team]
     
-    # 깔끔하게 보이기 위해 사진(왼쪽)과 설명(오른쪽)으로 컬럼을 나눔
     c1, c2 = st.columns([1, 2]) 
     
     with c1:
-        # width로 사진 크기 조절 가능
-        st.image(player["photo"], width=100)
+        # [수정] 그냥 url을 넣는 게 아니라, 함수로 이미지를 가져와서 넣음
+        image_data = load_image(player["photo"])
+        
+        if image_data:
+            st.image(image_data, width= 400)
+        else:
+            # 이미지를 못 가져왔을 때 보여줄 대체 텍스트나 아이콘
+            st.error("이미지 로딩 실패")
         
     with c2:
         st.subheader(f"이름: {player['name']}")
         st.write(f"**{target_team}**의 운명을 짊어진 에이스야!")
         
 else:
-    # 딕셔너리에 정보가 없을 때 나오는 화면
     st.info(f"📢 {target_team}의 선수 정보는 아직 업데이트 중이란다.")
 
 
@@ -267,6 +284,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
