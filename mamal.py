@@ -135,41 +135,87 @@ st.divider()
 st.header(" 💪국가별 핵심 선수💥💫 ") #제미나이가 확률만 반복해서 에이스로 바꿈
 
 ace_players = {
-   "대한민국": {
+  "대한민국": {
         "name": "손흥민", 
-        "photo": "http://googleusercontent.com/image_collection/image_retrieval/2811429719348725530_0"
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Son_Heung-min_in_2019.jpg/400px-Son_Heung-min_in_2019.jpg"
     },
-    "중국": {
+    "중국": { 
         "name": "하후돈", 
-        "photo": "http://googleusercontent.com/image_collection/image_retrieval/1661140704862786999_0"
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Xiahou_Dun_sancai_tuhui.jpg/300px-Xiahou_Dun_sancai_tuhui.jpg" 
     },
     "일본": {
         "name": "미토마 카오루", 
-        "photo": "http://googleusercontent.com/image_collection/image_retrieval/9704584292735256604_0"
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Kaoru_Mitoma_2022.jpg/400px-Kaoru_Mitoma_2022.jpg"
     },
-    "아르헨티나": {
-        "name": "리오넬 메시", 
-        "photo": "http://googleusercontent.com/image_collection/image_retrieval/4790324557776595404_0"
+    "이란": {
+        "name": "메흐디 타레미",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Mehdi_Taremi_2018.jpg/400px-Mehdi_Taremi_2018.jpg"
     },
-    "포르투갈": {
-        "name": "크리스티아누 호날두", 
-        "photo": "http://googleusercontent.com/image_collection/image_retrieval/5150285881505189150_0"
+    "호주": {
+        "name": "매튜 라이언",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Mathew_Ryan_2018.jpg/400px-Mathew_Ryan_2018.jpg"
+    },
+
+    # [유럽]
+    "잉글랜드": {
+        "name": "해리 케인", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Harry_Kane_2018.jpg/400px-Harry_Kane_2018.jpg"
     },
     "프랑스": {
         "name": "킬리안 음바페", 
-        "photo": "http://googleusercontent.com/image_collection/image_retrieval/17835894207695610092_0"
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Kylian_Mbapp%C3%A9_2018.jpg/400px-Kylian_Mbapp%C3%A9_2018.jpg"
     },
-    "브라질": {
-        "name": "비니시우스 주니오르", 
-        "photo": "http://googleusercontent.com/image_collection/image_retrieval/15937658472023523598_0"
+    "독일": {
+        "name": "자말 무시알라", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Jamal_Musiala_2022.jpg/400px-Jamal_Musiala_2022.jpg"
     },
-    "잉글랜드": {
-        "name": "해리 케인", 
-        "photo": "http://googleusercontent.com/image_collection/image_retrieval/11252998514709251737_0"
+    "스페인": {
+        "name": "로드리", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Rodri_2021.jpg/400px-Rodri_2021.jpg"
+    },
+    "포르투갈": {
+        "name": "크리스티아누 호날두", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cristiano_Ronaldo_2018.jpg/400px-Cristiano_Ronaldo_2018.jpg"
     },
     "벨기에": {
         "name": "케빈 더 브라위너", 
-        "photo": "http://googleusercontent.com/image_collection/image_retrieval/5905273901639546943_0"
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Kevin_De_Bruyne_2018.jpg/400px-Kevin_De_Bruyne_2018.jpg"
+    },
+    "네덜란드": {
+        "name": "버질 반 다이크",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Virgil_van_Dijk_2018.jpg/400px-Virgil_van_Dijk_2018.jpg"
+    },
+    "크로아티아": {
+        "name": "루카 모드리치",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Luka_Modric_2018.jpg/400px-Luka_Modric_2018.jpg"
+    },
+
+    # [남미]
+    "브라질": {
+        "name": "비니시우스 주니오르", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Vinicius_Jr_2021.jpg/400px-Vinicius_Jr_2021.jpg"
+    },
+    "아르헨티나": {
+        "name": "리오넬 메시", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Lionel_Messi_20180626.jpg/400px-Lionel_Messi_20180626.jpg"
+    },
+    "우루과이": {
+        "name": "페데리코 발베르데",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Federico_Valverde_2018.jpg/400px-Federico_Valverde_2018.jpg"
+    },
+
+    # [북중미/아프리카]
+    "미국": {
+        "name": "크리스천 풀리식",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Christian_Pulisic_2018.jpg/400px-Christian_Pulisic_2018.jpg"
+    },
+    "멕시코": {
+        "name": "기예르모 오초아",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Guillermo_Ochoa_2018.jpg/400px-Guillermo_Ochoa_2018.jpg"
+    },
+    "세네갈": {
+        "name": "사디오 마네",
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Sadio_Man%C3%A9_2018.jpg/400px-Sadio_Man%C3%A9_2018.jpg"
     }
 }
 
@@ -251,6 +297,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
