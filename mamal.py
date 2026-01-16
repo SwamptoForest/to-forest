@@ -79,7 +79,7 @@ df = pd.DataFrame(data)
 
 # 사이드바에서 조별 필터링 기능 추가
 st.sidebar.header("필터 설정")
-selected_group = st.sidebar.multiselect("확인하고 싶은 조를 선택해:", df["조"].unique(), default=[].unique())
+selected_group = st.sidebar.multiselect("확인하고 싶은 조를 선택해:", df["조"].unique(), default=[])
 
 # 필터링된 데이터
 if selected_group:
@@ -159,4 +159,5 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
