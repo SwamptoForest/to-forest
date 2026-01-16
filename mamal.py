@@ -149,21 +149,21 @@ ace_players = {
     # ---------------- [수정 대상: 안 나온다던 10개국 + 멕시코] ----------------
     
     # [북중미]
-    "멕시코": {"name": "기예르모 오초아", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Guillermo_Ochoa_2018.jpg/400px-Guillermo_Ochoa_2018.jpg"}, # 진짜 오초아 (위키미디어)
-    "퀴라소": {"name": "레안드로 바쿠나", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Leandro_Bacuna_2019.jpg/400px-Leandro_Bacuna_2019.jpg"}, # 바쿠나 (위키미디어)
+    "멕시코": {"name": "기예르모 오초아", "photo": "https://img.a.transfermarkt.technology/portrait/big/22187-1663838618.jpg"},
+    "퀴라소": {"name": "레안드로 바쿠나", "photo": "https://img.a.transfermarkt.technology/portrait/big/103410-1663838351.jpg"},
 
     # [아시아/중동]
-    "이란": {"name": "메흐디 타레미", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Mehdi_Taremi_2018.jpg/400px-Mehdi_Taremi_2018.jpg"}, # 타레미 (위키미디어)
-    "우즈베키스탄": {"name": "엘도르 쇼무로도프", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Eldor_Shomurodov_2019.jpg/400px-Eldor_Shomurodov_2019.jpg"}, # 쇼무로도프 (위키미디어)
-    "카타르": {"name": "아크람 아피프", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Akram_Afif_2019.jpg/400px-Akram_Afif_2019.jpg"}, # 아피프 (위키미디어)
-    "사우디아라비아": {"name": "살렘 알다우사리", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Salem_Al-Dawsari_2018.jpg/400px-Salem_Al-Dawsari_2018.jpg"}, # 알다우사리 (위키미디어)
-    "요르단": {"name": "무사 알타마리", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Musa_Al-Taamari.jpg/400px-Musa_Al-Taamari.jpg"}, # 알타마리 (위키미디어)
+    "이란": {"name": "메흐디 타레미", "photo": "https://img.a.transfermarkt.technology/portrait/big/199550-1694590721.jpg"},
+    "우즈베키스탄": {"name": "엘도르 쇼무로도프", "photo": "https://img.a.transfermarkt.technology/portrait/big/434888-1701097626.jpg"},
+    "카타르": {"name": "아크람 아피프", "photo": "https://img.a.transfermarkt.technology/portrait/big/317634-1546000657.jpg"},
+    "사우디아라비아": {"name": "살렘 알다우사리", "photo": "https://img.a.transfermarkt.technology/portrait/big/247781-1546000880.jpg"},
+    "요르단": {"name": "무사 알타마리", "photo": "https://img.a.transfermarkt.technology/portrait/big/381812-1682929498.jpg"},
 
     # [아프리카]
-    "이집트": {"name": "모하메드 살라", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Mohamed_Salah_2018.jpg/400px-Mohamed_Salah_2018.jpg"}, # 살라 (위키미디어 - 가장 안정적)
-    "가나": {"name": "모하메드 쿠두스", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Mohammed_Kudus_2022.jpg/400px-Mohammed_Kudus_2022.jpg"}, # 쿠두스 (위키미디어)
-    "튀니지": {"name": "유세프 므사크니", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Youssef_Msakni_2018.jpg/400px-Youssef_Msakni_2018.jpg"}, # 므사크니 (위키미디어)
-    "남아프리카공화국": {"name": "퍼시 타우", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Percy_Tau_2019.jpg/400px-Percy_Tau_2019.jpg"}, # 퍼시 타우 (위키미디어)
+    "이집트": {"name": "모하메드 살라", "photo": "https://img.a.transfermarkt.technology/portrait/big/148455-1728372342.jpg"},
+    "가나": {"name": "모하메드 쿠두스", "photo": "https://img.a.transfermarkt.technology/portrait/big/611800-1696432709.jpg"},
+    "튀니지": {"name": "유세프 므사크니", "photo": "https://img.a.transfermarkt.technology/portrait/big/98746-1459844556.jpg"},
+    "남아프리카공화국": {"name": "퍼시 타우", "photo": "https://img.a.transfermarkt.technology/portrait/big/376083-1673342482.jpg"},
 
     # ---------------- [기존 유지: 잘 나오던 국가들] ----------------
     "대한민국": {"name": "손흥민", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p85971.png"},
@@ -283,6 +283,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
