@@ -84,25 +84,24 @@ selected_group = st.sidebar.multiselect("확인하고 싶은 조를 선택해:",
 # 필터링된 데이터
 if selected_group:
     filtered_df = df[df["조"].isin(selected_group)].sort_values(by="진출 확률(%)", ascending=False)
+# 메인 화면 구성
+    col1, col2 = st.columns([1, 1])
+
+    with col1:
+        st.subheader("📊 국가별 진출 확률 데이터")
+        st.dataframe(filtered_df, use_container_width=True)
+
+    with col2:
+    
+        st.subheader("📈 시각화 차트")
+        df['국가_세로'] = df['국가'].apply(lambda x: '\n'.join(list(x))) #
+        fig, ax = plt.subplots(figsize=(10, 6))
+        ax.bar(df['국가_세로'], df['진출 확률(%)'], color='#ff4b4b')
+        y_label = "진\n출\n확\n률\n(%)"
+        ax.set_ylabel(y_label, rotation=0, labelpad=30, verticalalignment='center') # 축 이름도 세로로
+        st.pyplot(fig, use_container_width=True)
 else:
     st.info("🤷‍♂️조를 선택하면 알려줄거야!👍")
-# 메인 화면 구성
-col1, col2 = st.columns([1, 1])
-
-with col1:
-    st.subheader("📊 국가별 진출 확률 데이터")
-    st.dataframe(filtered_df, use_container_width=True)
-
-with col2:
-    
-    st.subheader("📈 시각화 차트")
-    df['국가_세로'] = df['국가'].apply(lambda x: '\n'.join(list(x))) #
-    fig, ax = plt.subplots(figsize=(10, 6))
-    ax.bar(df['국가_세로'], df['진출 확률(%)'], color='#ff4b4b')
-    y_label = "진\n출\n확\n률\n(%)"
-    ax.set_ylabel(y_label, rotation=0, labelpad=30, verticalalignment='center') # 축 이름도 세로로
-    st.pyplot(fig, use_container_width=True)
-
 # [수정] 국가명 (단위 없이 이름만 세로로)
 df['국가_세로'] = df['국가'].apply(lambda x: '\n'.join(list(x)))
 
@@ -159,5 +158,6 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
