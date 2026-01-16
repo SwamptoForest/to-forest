@@ -132,15 +132,47 @@ df['국가_세로'] = df['국가'].apply(lambda x: '\n'.join(list(x)))
 
 # 특정 국가 검색 기능
 st.divider()
-target_team = st.selectbox("진출 확률이 궁금한 국가를 선택해:", df["국가"].tolist())
-prob = df[df["국가"] == target_team]["진출 확률(%)"].values[0]
+st.header(" 💪국가별 핵심 선수💥💫 ")
 
-if prob > 90:
-    st.success(f"**{target_team}**의 32강 진출 확률은 **{prob}%**야. 거의 확정이라고 봐야지!")
-elif prob > 70:
-    st.info(f"**{target_team}**의 진출 확률은 **{prob}%**로 꽤 높은 편이야.")
+ace_players = {
+    "대한민국": {
+        "name": "손흥민", 
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Son_Heung-min_in_2019.jpg/250px-Son_Heung-min_in_2019.jpg"
+    },
+    "조조": {
+        "name": "하후돈", 
+        "photo": "https://via.placeholder.com/150?text=HaHuDon" 
+    },
+   
+}
+
+target_team = st.selectbox("어떤 팀의 에이스가 궁금해?", df["국가"].unique())
+
+if target_team in ace_players:
+    player = ace_players[target_team]
+    
+    # 깔끔하게 보이기 위해 사진(왼쪽)과 설명(오른쪽)으로 컬럼을 나눔
+    c1, c2 = st.columns([1, 2]) 
+    
+    with c1:
+        # width로 사진 크기 조절 가능
+        st.image(player["photo"], width=150)
+        
+    with c2:
+        st.subheader(f"이름: {player['name']}")
+        st.write(f"**{target_team}**의 운명을 짊어진 에이스야!")
+        
 else:
-    st.warning(f"**{target_team}**은 **{prob}%**로 쉽지 않은 여정이 되겠어.")
+    # 딕셔너리에 정보가 없을 때 나오는 화면
+    st.info(f"📢 {target_team}의 선수 정보는 아직 업데이트 중이란다.")
+
+
+
+
+
+
+
+
 st.write('')
 st.write('')
 st.write('')
@@ -183,6 +215,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
