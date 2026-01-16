@@ -148,25 +148,26 @@ st.divider()
 st.header(" 💪국가별 핵심 선수💥💫 ") #제미나이가 확률만 반복해서 에이스로 바꿈
 
 ace_players = {
-    # ---------------- [아시아 - 8개국] ----------------
-    "대한민국": {"name": "손흥민", "photo": "https://i.namu.wiki/i/GgC0j0JqZ4G4a9x5_q3y5a2k_7l0y5x7.jpg"},
-    "일본": {"name": "미토마 카오루", "photo": "https://assets.goal.com/v3/assets/bltcc7a7ffd2fbf71f5/blt4db818063077759d/64e62a14b574220b3b4ac666/Kaoru_Mitoma_Brighton_2023-24.jpg"},
-    "호주": {"name": "매튜 라이언", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p109533.png"},
-    "이란": {"name": "메흐디 타레미", "photo": "https://cdn.sofifa.net/players/239/697/24_360.png"},
-    "사우디아라비아": {"name": "살렘 알다우사리", "photo": "https://cdn.sofifa.net/players/198/884/24_360.png"},
-    "카타르": {"name": "아크람 아피프", "photo": "https://cdn.sofifa.net/players/222/384/24_360.png"},
-    "요르단": {"name": "무사 알타마리", "photo": "https://cdn.sofifa.net/players/259/695/24_360.png"},
-    "우즈베키스탄": {"name": "엘도르 쇼무로도프", "photo": "https://cdn.sofifa.net/players/243/296/24_360.png"},
+    # ---------------- [아시아] ----------------
+    "대한민국": {"name": "손흥민", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p85971.png"}, # PL 공식 (토트넘)
+    "중국": {"name": "하후돈", "photo": "https://img.youtube.com/vi/6cammEr9gPM/hqdefault.jpg"}, # 자연스럽게 잠입
+    "일본": {"name": "미토마 카오루", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p451340.png"}, # PL 공식 (브라이튼)
+    "호주": {"name": "매튜 라이언", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p109533.png"}, # PL 공식 (전 브라이튼/아스날)
+    "이란": {"name": "메흐디 타레미", "photo": "https://b.fssta.com/uploads/application/soccer/headshots/40673.vresize.350.350.medium.34.png"}, # Fox Sports (안정적)
+    "사우디아라비아": {"name": "살렘 알다우사리", "photo": "https://b.fssta.com/uploads/application/soccer/headshots/40786.vresize.350.350.medium.60.png"},
+    "카타르": {"name": "아크람 아피프", "photo": "https://b.fssta.com/uploads/application/soccer/headshots/40854.vresize.350.350.medium.46.png"},
+    "요르단": {"name": "무사 알타마리", "photo": "https://b.fssta.com/uploads/application/soccer/headshots/69368.vresize.350.350.medium.56.png"},
+    "우즈베키스탄": {"name": "엘도르 쇼무로도프", "photo": "https://b.fssta.com/uploads/application/soccer/headshots/50346.vresize.350.350.medium.52.png"},
 
-    # ---------------- [북중미 - 6개국] ----------------
+    # ---------------- [북중미] ----------------
     "미국": {"name": "크리스천 풀리식", "photo": "https://cdn.sofifa.net/players/227/796/24_360.png"},
-    "멕시코": {"name": "기예르모 오초아", "photo": "https://b.fssta.com/uploads/application/soccer/headshots/885.vresize.350.350.medium.14.png"},
+    "멕시코": {"name": "기예르모 오초아", "photo": "https://b.fssta.com/uploads/application/soccer/headshots/885.vresize.350.350.medium.14.png"}, # 오초아 본인 확인 완료
     "캐나다": {"name": "알폰소 데이비스", "photo": "https://cdn.sofifa.net/players/234/396/24_360.png"},
     "파나마": {"name": "아달베르토 카라스키야", "photo": "https://cdn.sofifa.net/players/245/037/24_360.png"},
     "아이티": {"name": "뒤캉 나종", "photo": "https://cdn.sofifa.net/players/225/956/24_360.png"},
-    "퀴라소": {"name": "레안드로 바쿠나", "photo": "https://cdn.sofifa.net/players/202/652/24_360.png"},
+    "퀴라소": {"name": "레안드로 바쿠나", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p156642.png"}, # PL 공식 (아스톤빌라 시절)
 
-    # ---------------- [남미 - 6개국] ----------------
+    # ---------------- [남미] ----------------
     "아르헨티나": {"name": "리오넬 메시", "photo": "https://cdn.sofifa.net/players/158/023/24_360.png"},
     "브라질": {"name": "비니시우스 주니오르", "photo": "https://cdn.sofifa.net/players/238/794/24_360.png"},
     "우루과이": {"name": "페데리코 발베르데", "photo": "https://cdn.sofifa.net/players/239/053/24_360.png"},
@@ -174,18 +175,18 @@ ace_players = {
     "에콰도르": {"name": "모이세스 카이세도", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p486666.png"},
     "파라과이": {"name": "미구엘 알미론", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p179018.png"},
 
-    # ---------------- [아프리카 - 9개국] (복구 완료) ----------------
-    "이집트": {"name": "모하메드 살라", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p118748.png"},
-    "세네갈": {"name": "사디오 마네", "photo": "https://cdn.sofifa.net/players/208/722/24_360.png"},
+    # ---------------- [아프리카] ----------------
+    "이집트": {"name": "모하메드 살라", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p118748.png"}, # PL 공식 (리버풀)
+    "세네갈": {"name": "사디오 마네", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p110979.png"}, # PL 공식 (리버풀 시절)
     "모로코": {"name": "아크라프 하키미", "photo": "https://cdn.sofifa.net/players/235/212/24_360.png"},
-    "알제리": {"name": "리야드 마레즈", "photo": "https://cdn.sofifa.net/players/204/485/24_360.png"},
-    "가나": {"name": "모하메드 쿠두스", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p465809.png"},
+    "알제리": {"name": "리야드 마레즈", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p103025.png"}, # PL 공식 (맨시티 시절)
+    "가나": {"name": "모하메드 쿠두스", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p465809.png"}, # PL 공식 (웨스트햄)
     "코트디부아르": {"name": "프랑크 케시에", "photo": "https://cdn.sofifa.net/players/235/569/24_360.png"},
-    "튀니지": {"name": "유세프 므사크니", "photo": "https://cdn.sofifa.net/players/200/455/24_360.png"},
+    "튀니지": {"name": "유세프 므사크니", "photo": "https://b.fssta.com/uploads/application/soccer/headshots/24430.vresize.350.350.medium.36.png"}, # Fox Sports
     "카보베르데": {"name": "라이언 멘데스", "photo": "https://cdn.sofifa.net/players/205/498/24_360.png"},
-    "남아프리카공화국": {"name": "퍼시 타우", "photo": "https://cdn.sofifa.net/players/232/235/24_360.png"},
+    "남아프리카공화국": {"name": "퍼시 타우", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p245366.png"}, # PL 공식 (브라이튼 시절) - 국명 수정 완료
 
-    # ---------------- [유럽 - 12개국] ----------------
+    # ---------------- [유럽] ----------------
     "잉글랜드": {"name": "해리 케인", "photo": "https://cdn.sofifa.net/players/202/126/24_360.png"},
     "프랑스": {"name": "킬리안 음바페", "photo": "https://cdn.sofifa.net/players/231/747/24_360.png"},
     "독일": {"name": "자말 무시알라", "photo": "https://cdn.sofifa.net/players/256/790/24_360.png"},
@@ -199,9 +200,8 @@ ace_players = {
     "스코틀랜드": {"name": "스콧 맥토미니", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p195851.png"},
     "스위스": {"name": "그라니트 자카", "photo": "https://cdn.sofifa.net/players/198/219/24_360.png"},
 
-    # ---------------- [오세아니아 - 1개국] ----------------
+    # ---------------- [오세아니아] ----------------
     "뉴질랜드": {"name": "크리스 우드", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p54469.png"},
-    "중국": {"name": "하후돈", "photo": "https://img.youtube.com/vi/6cammEr9gPM/hqdefault.jpg"}
 }
 
 
@@ -288,6 +288,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
