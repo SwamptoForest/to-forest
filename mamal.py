@@ -1,6 +1,7 @@
 import streamlit as st
 import pandas as pd
 import matplotlib.pyplot as plt
+import matplotlib.cm as cm
 import platform
 #폰트 인식 못해서 수정함
 plt.rcParams['font.family'] = 'NanumGothic'
@@ -92,14 +93,38 @@ if selected_group:
         st.dataframe(filtered_df, use_container_width=True)
 
     with col2:
-    
         st.subheader("📈 시각화 차트")
-        df['국가_세로'] = df['국가'].apply(lambda x: '\n'.join(list(x))) #
-        fig, ax = plt.subplots(figsize=(10, 6))
-        ax.bar(df['국가_세로'], df['진출 확률(%)'], color='#ff4b4b')
-        y_label = "진\n출\n확\n률\n(%)"
-        ax.set_ylabel(y_label, rotation=0, labelpad=30, verticalalignment='center') # 축 이름도 세로로
-        st.pyplot(fig, use_container_width=True)
+        
+        if not filtered_df.empty:
+            filtered_df['국가_세로'] = filtered_df['국가'].apply(lambda x: '\n'.join(list(x))) #
+            unique_groups = df['조'].unique()
+            # tab10 같은 컬러맵을 사용해서 조별로 고유 색상 배정
+            colormap = plt.cm.get_cmap('tab10', len(unique_groups))
+            
+            bar_colors = []
+            for group in filtered_df['조']:
+                if group == '조조':  # 조조
+                    bar_colors.append('#FFD700') # Gold color hex code
+                else:
+                    # 전체 조 리스트에서 현재 조의 인덱스를 찾아 색상 매핑
+                    group_index = list(unique_groups).index(group)
+                    bar_colors.append(colormap(group_index))
+
+            # 3. 그래프 그리기 (데이터 소스를 filtered_df로 변경)
+            fig, ax = plt.subplots(figsize=(10, 6))
+            
+            # x축, y축 데이터와 색상(color=bar_colors) 지정
+            bars = ax.bar(filtered_df['국가_세로'], filtered_df['진출 확률(%)'], color=bar_colors)
+            
+            # 4. 축 라벨 및 설정
+            y_label = "진\n출\n확\n률\n(%)"
+            ax.set_ylabel(y_label, rotation=0, labelpad=20, verticalalignment='center') # 세로 쓰기 유지
+            
+            # y축 범위 설정 (0~100% 느낌을 살리려면 필요시 추가, 지금은 자동)
+            ax.set_ylim(0, 100) 
+            
+            # 그래프 표시
+            st.pyplot(fig, use_container_width=True)
 else:
     st.info("🤷‍♂️조를 선택하면 알려줄거야!👍")
 # [수정] 국가명 (단위 없이 이름만 세로로)
