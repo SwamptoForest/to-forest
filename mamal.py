@@ -165,7 +165,7 @@ ace_players = {
     },
     "잉글랜드": {
         "name": "해리 케인", 
-        "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Harry_Kane_2018.jpg/250px-Harry_Kane_2018.jpg"
+        "photo": "https://upload.wikimedia.org/wikipedia/commons/9/91/Harry_Kane_on_October_10%2C_2023.jpg"
     },
     "독일": {
         "name": "자말 무시알라", 
@@ -250,6 +250,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
