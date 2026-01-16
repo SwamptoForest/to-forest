@@ -135,62 +135,57 @@ st.divider()
 st.header(" 💪국가별 핵심 선수💥💫 ") #제미나이가 확률만 반복해서 에이스로 바꿈
 
 ace_players = {
-    "대한민국": {"name": "손흥민", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Son_Heung-min_in_2019.jpg/400px-Son_Heung-min_in_2019.jpg"},
-    "일본": {"name": "미토마 카오루", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Kaoru_Mitoma_2022.jpg/400px-Kaoru_Mitoma_2022.jpg"},
-    "이란": {"name": "메흐디 타레미", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/9d/Mehdi_Taremi_2018.jpg/400px-Mehdi_Taremi_2018.jpg"},
-    "호주": {"name": "매튜 라이언", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Mathew_Ryan_2018.jpg/400px-Mathew_Ryan_2018.jpg"},
-    "사우디아라비아": {"name": "살렘 알다우사리", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/87/Salem_Al-Dawsari_2018.jpg/400px-Salem_Al-Dawsari_2018.jpg"},
-    "카타르": {"name": "아크람 아피프", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/7f/Akram_Afif_2019.jpg/400px-Akram_Afif_2019.jpg"},
-    "요르단": {"name": "무사 알타마리", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b5/Musa_Al-Taamari.jpg/400px-Musa_Al-Taamari.jpg"},
-    "우즈베키스탄": {"name": "엘도르 쇼무로도프", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Eldor_Shomurodov_2019.jpg/400px-Eldor_Shomurodov_2019.jpg"},
+    "대한민국": {"name": "손흥민", "photo": "https://cdn.sofifa.net/players/200/104/24_120.png"},
+    "일본": {"name": "미토마 카오루", "photo": "https://cdn.sofifa.net/players/263/155/24_120.png"},
+    "이란": {"name": "메흐디 타레미", "photo": "https://cdn.sofifa.net/players/239/697/24_120.png"},
+    "호주": {"name": "매튜 라이언", "photo": "https://cdn.sofifa.net/players/200/755/24_120.png"},
+    "사우디아라비아": {"name": "살렘 알다우사리", "photo": "https://cdn.sofifa.net/players/198/884/24_120.png"},
+    "카타르": {"name": "아크람 아피프", "photo": "https://cdn.sofifa.net/players/222/384/24_120.png"},
+    "요르단": {"name": "무사 알타마리", "photo": "https://cdn.sofifa.net/players/259/695/24_120.png"},
+    "우즈베키스탄": {"name": "엘도르 쇼무로도프", "photo": "https://cdn.sofifa.net/players/243/296/24_120.png"},
 
-    # [북중미 - 6개국] (코스타리카 OUT, 아이티/퀴라소/파나마 IN)
-    "미국": {"name": "크리스천 풀리식", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/18/Christian_Pulisic_2018.jpg/400px-Christian_Pulisic_2018.jpg"},
-    "멕시코": {"name": "기예르모 오초아", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8b/Guillermo_Ochoa_2018.jpg/400px-Guillermo_Ochoa_2018.jpg"},
-    "캐나다": {"name": "알폰소 데이비스", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/66/Alphonso_Davies_2019.jpg/400px-Alphonso_Davies_2019.jpg"},
-    "파나마": {"name": "아달베르토 카라스키야", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/52/Adalberto_Carrasquilla_2018.jpg/400px-Adalberto_Carrasquilla_2018.jpg"},
-    "아이티": {"name": "뒤캉 나종", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/6/63/Duckens_Nazon_2019.jpg/400px-Duckens_Nazon_2019.jpg"},
-    "퀴라소": {"name": "레안드로 바쿠나", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4e/Leandro_Bacuna_2019.jpg/400px-Leandro_Bacuna_2019.jpg"},
+    
+    "미국": {"name": "크리스천 풀리식", "photo": "https://cdn.sofifa.net/players/227/796/24_120.png"},
+    "멕시코": {"name": "기예르모 오초아", "photo": "https://cdn.sofifa.net/players/167/948/24_120.png"},
+    "캐나다": {"name": "알폰소 데이비스", "photo": "https://cdn.sofifa.net/players/234/396/24_120.png"},
+    "파나마": {"name": "아달베르토 카라스키야", "photo": "https://cdn.sofifa.net/players/245/037/24_120.png"},
+    "아이티": {"name": "뒤캉 나종", "photo": "https://cdn.sofifa.net/players/225/956/24_120.png"},
+    "퀴라소": {"name": "레안드로 바쿠나", "photo": "https://cdn.sofifa.net/players/202/652/24_120.png"},
 
-    # [남미 - 6개국] (볼리비아 PO행으로 제외)
-    "아르헨티나": {"name": "리오넬 메시", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Lionel_Messi_20180626.jpg/400px-Lionel_Messi_20180626.jpg"},
-    "브라질": {"name": "비니시우스 주니오르", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f3/Vinicius_Jr_2021.jpg/400px-Vinicius_Jr_2021.jpg"},
-    "우루과이": {"name": "페데리코 발베르데", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/Federico_Valverde_2018.jpg/400px-Federico_Valverde_2018.jpg"},
-    "콜롬비아": {"name": "루이스 디아스", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/3/38/Luis_D%C3%ADaz_2021.jpg/400px-Luis_D%C3%ADaz_2021.jpg"},
-    "에콰도르": {"name": "모이세스 카이세도", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/23/Moises_Caicedo_2022.jpg/400px-Moises_Caicedo_2022.jpg"},
-    "파라과이": {"name": "미구엘 알미론", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c5/Miguel_Almiron_2019.jpg/400px-Miguel_Almiron_2019.jpg"},
+   
+    "아르헨티나": {"name": "리오넬 메시", "photo": "https://cdn.sofifa.net/players/158/023/24_120.png"},
+    "브라질": {"name": "비니시우스 주니오르", "photo": "https://cdn.sofifa.net/players/238/794/24_120.png"},
+    "우루과이": {"name": "페데리코 발베르데", "photo": "https://cdn.sofifa.net/players/239/053/24_120.png"},
+    "콜롬비아": {"name": "루이스 디아스", "photo": "https://cdn.sofifa.net/players/241/084/24_120.png"},
+    "에콰도르": {"name": "모이세스 카이세도", "photo": "https://cdn.sofifa.net/players/255/270/24_120.png"},
+    "파라과이": {"name": "미구엘 알미론", "photo": "https://cdn.sofifa.net/players/230/977/24_120.png"},
 
-    # [아프리카 - 9개국]
-    "이집트": {"name": "모하메드 살라", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Mohamed_Salah_2018.jpg/400px-Mohamed_Salah_2018.jpg"},
-    "세네갈": {"name": "사디오 마네", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e6/Sadio_Man%C3%A9_2018.jpg/400px-Sadio_Man%C3%A9_2018.jpg"},
-    "모로코": {"name": "아크라프 하키미", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/07/Achraf_Hakimi_2018.jpg/400px-Achraf_Hakimi_2018.jpg"},
-    "알제리": {"name": "리야드 마레즈", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/04/Riyad_Mahrez_2019.jpg/400px-Riyad_Mahrez_2019.jpg"},
-    "가나": {"name": "모하메드 쿠두스", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/f0/Mohammed_Kudus_2022.jpg/400px-Mohammed_Kudus_2022.jpg"},
-    "코트디부아르": {"name": "프랑크 케시에", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/90/Franck_Kessi%C3%A9_2018.jpg/400px-Franck_Kessi%C3%A9_2018.jpg"},
-    "튀니지": {"name": "유세프 므사크니", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Youssef_Msakni_2018.jpg/400px-Youssef_Msakni_2018.jpg"},
-    "카보베르데": {"name": "라이언 멘데스", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/9/95/Ryan_Mendes_2013.jpg/400px-Ryan_Mendes_2013.jpg"},
-    "남아공": {"name": "퍼시 타우", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/1/1a/Percy_Tau_2019.jpg/400px-Percy_Tau_2019.jpg"}, 
-    # (아프리카 9개국: 이집트,세네갈,모로코,알제리,가나,코트디,튀니지,카보베르데,남아공)
+    
+    "이집트": {"name": "모하메드 살라", "photo": "https://cdn.sofifa.net/players/209/331/24_120.png"},
+    "세네갈": {"name": "사디오 마네", "photo": "https://cdn.sofifa.net/players/208/722/24_120.png"},
+    "모로코": {"name": "아크라프 하키미", "photo": "https://cdn.sofifa.net/players/235/212/24_120.png"},
+    "알제리": {"name": "리야드 마레즈", "photo": "https://cdn.sofifa.net/players/204/485/24_120.png"},
+    "가나": {"name": "모하메드 쿠두스", "photo": "https://cdn.sofifa.net/players/251/573/24_120.png"},
+    "코트디부아르": {"name": "프랑크 케시에", "photo": "https://cdn.sofifa.net/players/235/569/24_120.png"},
+    "튀니지": {"name": "유세프 므사크니", "photo": "https://cdn.sofifa.net/players/200/455/24_120.png"},
+    "카보베르데": {"name": "라이언 멘데스", "photo": "https://cdn.sofifa.net/players/205/498/24_120.png"},
+    "남아공": {"name": "퍼시 타우", "photo": "https://cdn.sofifa.net/players/232/235/24_120.png"},
 
-    # [유럽 - 12개국] (확정된 12개국)
-    "잉글랜드": {"name": "해리 케인", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/2e/Harry_Kane_2018.jpg/400px-Harry_Kane_2018.jpg"},
-    "프랑스": {"name": "킬리안 음바페", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/b3/Kylian_Mbapp%C3%A9_2018.jpg/400px-Kylian_Mbapp%C3%A9_2018.jpg"},
-    "독일": {"name": "자말 무시알라", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/5/54/Jamal_Musiala_2022.jpg/400px-Jamal_Musiala_2022.jpg"},
-    "스페인": {"name": "로드리", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Rodri_2021.jpg/400px-Rodri_2021.jpg"},
-    "포르투갈": {"name": "크리스티아누 호날두", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8c/Cristiano_Ronaldo_2018.jpg/400px-Cristiano_Ronaldo_2018.jpg"},
-    "벨기에": {"name": "케빈 더 브라위너", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/40/Kevin_De_Bruyne_2018.jpg/400px-Kevin_De_Bruyne_2018.jpg"},
-    "네덜란드": {"name": "버질 반 다이크", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/2/22/Virgil_van_Dijk_2018.jpg/400px-Virgil_van_Dijk_2018.jpg"},
-    "크로아티아": {"name": "루카 모드리치", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/Luka_Modric_2018.jpg/400px-Luka_Modric_2018.jpg"},
-    "오스트리아": {"name": "다비드 알라바", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/0/02/David_Alaba_2018.jpg/400px-David_Alaba_2018.jpg"},
-    "노르웨이": {"name": "엘링 홀란드", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/7/74/Erling_Haaland_2023.jpg/400px-Erling_Haaland_2023.jpg"},
-    "스코틀랜드": {"name": "스콧 맥토미니", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d1/Scott_McTominay_2021.jpg/400px-Scott_McTominay_2021.jpg"},
-    "스위스": {"name": "그라니트 자카", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/4/4a/Granit_Xhaka_2018.jpg/400px-Granit_Xhaka_2018.jpg"},
-
-    # [오세아니아 - 1개국]
-    "뉴질랜드": {"name": "크리스 우드", "photo": "https://upload.wikimedia.org/wikipedia/commons/thumb/d/d4/Chris_Wood_2017.jpg/400px-Chris_Wood_2017.jpg"},
-
-    # [스페셜 게스트 - 1개국]
-    "중국": {"name": "하후돈", "photo": "https://i.ytimg.com/vi/1j6j7x8y6k8/hqdefault.jpg"} # 하후돈 눈알 먹방
+   
+    "잉글랜드": {"name": "해리 케인", "photo": "https://cdn.sofifa.net/players/202/126/24_120.png"},
+    "프랑스": {"name": "킬리안 음바페", "photo": "https://cdn.sofifa.net/players/231/747/24_120.png"},
+    "독일": {"name": "자말 무시알라", "photo": "https://cdn.sofifa.net/players/256/790/24_120.png"},
+    "스페인": {"name": "로드리", "photo": "https://cdn.sofifa.net/players/231/866/24_120.png"},
+    "포르투갈": {"name": "크리스티아누 호날두", "photo": "https://cdn.sofifa.net/players/020/801/24_120.png"},
+    "벨기에": {"name": "케빈 더 브라위너", "photo": "https://cdn.sofifa.net/players/192/985/24_120.png"},
+    "네덜란드": {"name": "버질 반 다이크", "photo": "https://cdn.sofifa.net/players/203/376/24_120.png"},
+    "크로아티아": {"name": "루카 모드리치", "photo": "https://cdn.sofifa.net/players/177/003/24_120.png"},
+    "오스트리아": {"name": "다비드 알라바", "photo": "https://cdn.sofifa.net/players/197/445/24_120.png"},
+    "노르웨이": {"name": "엘링 홀란드", "photo": "https://cdn.sofifa.net/players/239/085/24_120.png"},
+    "스코틀랜드": {"name": "스콧 맥토미니", "photo": "https://cdn.sofifa.net/players/235/790/24_120.png"},
+    "스위스": {"name": "그라니트 자카", "photo": "https://cdn.sofifa.net/players/198/219/24_120.png"},
+    "뉴질랜드": {"name": "크리스 우드", "photo": "https://cdn.sofifa.net/players/190/607/24_120.png"},
+    "중국": {"name": "하후돈", "photo": "https://img.youtube.com/vi/6cammEr9gPM/hqdefault.jpg"}
 }
 
 
@@ -204,7 +199,7 @@ if target_team in ace_players:
     
     with c1:
         # width로 사진 크기 조절 가능
-        st.image(player["photo"], width=300)
+        st.image(player["photo"], width=400)
         
     with c2:
         st.subheader(f"이름: {player['name']}")
@@ -272,6 +267,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
