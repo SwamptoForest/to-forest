@@ -79,11 +79,13 @@ df = pd.DataFrame(data)
 
 # 사이드바에서 조별 필터링 기능 추가
 st.sidebar.header("필터 설정")
-selected_group = st.sidebar.multiselect("확인하고 싶은 조를 선택해:", df["조"].unique(), default=df["조"].unique())
+selected_group = st.sidebar.multiselect("확인하고 싶은 조를 선택해:", df["조"].unique(), default=[].unique())
 
 # 필터링된 데이터
-filtered_df = df[df["조"].isin(selected_group)].sort_values(by="진출 확률(%)", ascending=False)
-
+if selected_group:
+    filtered_df = df[df["조"].isin(selected_group)].sort_values(by="진출 확률(%)", ascending=False)
+else:
+    st.info("🤷‍♂️조를 선택하면 알려줄거야!👍")
 # 메인 화면 구성
 col1, col2 = st.columns([1, 1])
 
