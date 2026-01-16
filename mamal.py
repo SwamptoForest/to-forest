@@ -169,7 +169,7 @@ ace_players = {
     "코트디부아르": {"name": "프랑크 케시에", "photo": "https://cdn.sofifa.net/players/235/569/24_120.png"},
     "튀니지": {"name": "유세프 므사크니", "photo": "https://cdn.sofifa.net/players/200/455/24_120.png"},
     "카보베르데": {"name": "라이언 멘데스", "photo": "https://cdn.sofifa.net/players/205/498/24_120.png"},
-    "남아공": {"name": "퍼시 타우", "photo": "https://cdn.sofifa.net/players/232/235/24_120.png"},
+    "남아프리카공화국": {"name": "퍼시 타우", "photo": "https://cdn.sofifa.net/players/232/235/24_120.png"},
 
    
     "잉글랜드": {"name": "해리 케인", "photo": "https://cdn.sofifa.net/players/202/126/24_120.png"},
@@ -199,7 +199,7 @@ if target_team in ace_players:
     
     with c1:
         # width로 사진 크기 조절 가능
-        st.image(player["photo"], width=400)
+        st.image(player["photo"], width=100)
         
     with c2:
         st.subheader(f"이름: {player['name']}")
@@ -267,6 +267,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
