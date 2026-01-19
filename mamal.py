@@ -132,23 +132,33 @@ else:
 # [수정] 국가명 (단위 없이 이름만 세로로)
 df['국가_세로'] = df['국가'].apply(lambda x: '\n'.join(list(x)))
 
-# 얘가 위에서 가져온 라이브러리들을 막 섞어쓰면서 사진을 온전히 모셔오게 하려고 만든 함수(제미나이가 만듬) # 였으나 핫링크 차단? 이라는 웹사이트들의 사진 긁어오기 차단 때문에 일부는 로컬 파일 업로드로 대체하기로 함.
+# 얘가 위에서 가져온 라이브러리들을 막 섞어쓰면서 사진을 온전히 모셔오게 하려고 만든 함수(제미나이가 만듬) 
+# 였으나 핫링크 차단? 이라는 웹사이트들의 사진 긁어오기 차단 때문에 일부는 로컬 파일 업로드로 대체하기로 함.
 def load_image(image_source):
-    # 1. 내 컴퓨터에 있는 파일인지 확인 (images/ 로 시작하는 경우) # 참고로 내가 단 주석과 제미나이가 설명해준다고 단 주석이 마구 섞여있음.
+    # 1. 내 컴퓨터 파일인 경우
     if not image_source.startswith("http"):
         if os.path.exists(image_source):
+            # [핵심] GIF라면? -> PIL로 열지 말고 '파일 경로'를 그대로 반환!
+            if image_source.lower().endswith(".gif"):
+                return image_source 
+            # 나머지(jpg, png, webp) -> PIL로 열기
             return Image.open(image_source)
         else:
-            return None # 파일이 없으면 None 반환
+            return None
             
     # 2. 인터넷 주소(URL)인 경우
     else:
         try:
             headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
-            response = requests.get(image_source, headers=headers, timeout=3)
+            response = requests.get(image_source, headers=headers, timeout=5)
+            
+            # [핵심] GIF라면? -> PIL로 열지 말고 '다운받은 데이터 뭉치(bytes)'를 그대로 반환!
+            if image_source.lower().endswith(".gif"):
+                return response.content
+                
             return Image.open(BytesIO(response.content))
         except:
-            return None
+            return None  # 이번에는 gif가 움직이질 않아서 재수정, 제미나이가 만들어주긴 했지만 위에서 정의된 함수가 여러 사진을 온전히 나오게 하기 위해서 가장 많이 수정한 코드.
 # 특정 국가 검색 기능
 st.divider()
 st.header(" 💪국가별 핵심 선수💥💫 ") #제미나이가 확률만 반복해서 에이스로 바꿈
@@ -231,7 +241,7 @@ if target_team in ace_players:
             for p in player["photo"]:
                 img_data = load_image(p)
                 if img_data:
-                    st.image(img_data, width=150)
+                    st.image(img_data, width=900)
                 else:
                     st.error("이미지 로딩 실패")
                     
@@ -239,7 +249,7 @@ if target_team in ace_players:
             # 리스트가 아니라면(한 장)? -> 그냥 보여주기
             img_data = load_image(player["photo"])
             if img_data:
-                st.image(img_data, width=150)
+                st.image(img_data, width=900)
             else:
                 st.error("이미지 로딩 실패")
         # -------------------------------------------------------
@@ -309,6 +319,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
