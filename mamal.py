@@ -123,37 +123,41 @@ with col2:
         unique_groups = df['조'].unique()
         colormap = plt.cm.get_cmap('tab10', len(unique_groups))
         
-        # ----------------------------------------------------------------
-        # [수정된 로직] 4강 리스트 적용
-        # ----------------------------------------------------------------
-        bar_colors = []
+        fig, ax = plt.subplots(figsize=(10, 6))
         
-        for idx, row in filtered_df.iterrows():
-            country = row['국가']
-            group = row['조']
-            
-            # 1. 뉴비 강조 (연두색)
-            if highlight_newbie and country in newbie_list:
-                bar_colors.append('#00FF00') 
-                
-            # 2. 4강 경험국 강조 (보라색 - 왕족 느낌!)
-            elif highlight_semifinal and country in semifinal_list:
-                bar_colors.append('#8A2BE2') # BlueViolet 색상
-                
-            # 3. 기본 조별 색상
+        # 1단계: 일단 기본 조별 색상으로 다 그린다.
+        base_colors = []
+        for group in filtered_df['조']:
+            if group == '조조':
+                base_colors.append('#FFD700')
             else:
-                if group == '조조':
-                    bar_colors.append('#FFD700')
-                else:
-                    group_index = list(unique_groups).index(group)
-                    bar_colors.append(colormap(group_index))
+                group_index = list(unique_groups).index(group)
+                base_colors.append(colormap(group_index))
+                
+        bars = ax.bar(filtered_df['국가_세로'], filtered_df['진출 확률(%)'], color=base_colors)
+        
+        # ----------------------------------------------------------------
+        # [핵심 로직 변경] 다 그린 막대(bars)를 하나씩 꺼내서 후가공하기
+        # ----------------------------------------------------------------
+        # zip을 써서 막대 객체(bar)와 데이터 정보(row)를 같이 순회함
+        for bar, (idx, row) in zip(bars, filtered_df.iterrows()):
+            country = row['국가']
+            
+            # 1. 뉴비 강조: 그냥 색깔을 덮어씌움 (형광 연두)
+            if highlight_newbie and country in newbie_list:
+                bar.set_color('#00FF00')
+                
+            # 2. 4강 경험국 강조: 색은 유지하되 '무늬(Hatch)'를 새김!
+            elif highlight_semifinal and country in semifinal_list:
+                # 무늬 종류: '/', '\', '|', '-', '+', 'x', 'o', 'O', '.', '*'
+                # 빗금을 두껍게 넣어서 강조 ('//'를 여러 번 쓰면 더 촘촘해짐)
+                bar.set_hatch('///') 
+                # 무늬 색상을 잘 보이게 하려면 테두리 색을 설정해야 함
+                bar.set_edgecolor('white') # 흰색 빗금
+                bar.set_linewidth(2) # 테두리 약간 두껍게
         # ----------------------------------------------------------------
 
-        # 차트 그리기
-        fig, ax = plt.subplots(figsize=(10, 6))
-        bars = ax.bar(filtered_df['국가_세로'], filtered_df['진출 확률(%)'], color=bar_colors)
-        
-        # (축 설정 등 나머지 코드는 기존과 동일하게 유지)
+        # 축 설정 및 표시 (기존과 동일)
         y_label = "진\n출\n확\n률\n(%)"
         ax.set_ylabel(y_label, rotation=0, labelpad=20, verticalalignment='center')
         ax.set_ylim(0, 100)
@@ -350,6 +354,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
