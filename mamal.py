@@ -2,7 +2,7 @@ import streamlit as st
 import requests # 선수 사진이 자꾸 엑박이라서 제미나이를 압박했더니 해결책이라고 준 것.
 from PIL import Image # 엑박 해결용 2, 이거는 저 윗녀석이 가져온 데이터를 이미지로 변환시켜준다는 라이브러리.
 from io import BytesIO # 엑박 해결용 3. 이거는 가져온 데이터를 일일이 컴퓨터에 저장하고 다시 변환하고 이러면 느려지니까 중간에 가상의 저장위치 역할을 해서 과정을 간소하게 해준다 함.
-import pandas as pd
+import pandas as pd      # 위의 두 라이브러리를 활용해서 살린 사진이 많았으나 여전히 안나오는게 여러장이라 그냥 로컬 업로드가 낫다고 판단함
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import platform
@@ -155,15 +155,15 @@ st.header(" 💪국가별 핵심 선수💥💫 ") #제미나이가 확률만 �
 
 ace_players = {
     # [아시아]
-    "대한민국": {"name": "손흥민", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p85971.png"},
-    "중국": {"name": "하후돈", "photo": "https://img.youtube.com/vi/6cammEr9gPM/hqdefault.jpg"},
+    "대한민국": {"name": "손흥민", "photo": ["https://resources.premierleague.com/premierleague/photos/players/250x250/p85971.png", "images/korea.gif"]},
+    "중국": {"name": "하후돈", "photo": "images/china.jpg"},
     "일본": {"name": "미토마 카오루", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p451340.png"},
     "호주": {"name": "매튜 라이언", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p109533.png"},
     
     # [로컬 파일 사용 - 다운로드 필요]
     "이란": {"name": "메흐디 타레미", "photo": "images/iran.jpg"},
     "우즈베키스탄": {"name": "엘도르 쇼무로도프", "photo": "images/uzbekistan.jpg"},
-    "카타르": {"name": "아크람 아피프", "photo": "images/qatar.jpg"},
+    "카타르": {"name": "아크람 아피프", "photo": "images/qatar.webp"},
     "사우디아라비아": {"name": "살렘 알다우사리", "photo": "images/saudi.jpg"},
     "요르단": {"name": "무사 알타마리", "photo": "images/jordan.jpg"},
 
@@ -174,7 +174,7 @@ ace_players = {
     "아이티": {"name": "뒤캉 나종", "photo": "https://cdn.sofifa.net/players/225/956/24_360.png"},
     # [로컬 파일 사용]
     "멕시코": {"name": "기예르모 오초아", "photo": "images/mexico.webp"}, 
-    "퀴라소": {"name": "레안드로 바쿠나", "photo": "images/curacao.jpg"},
+    "퀴라소": {"name": "딕 아드보카트(감독)", "photo": "images/curacao.jpg"},
 
     # [남미] (기존 URL 유지)
     "아르헨티나": {"name": "리오넬 메시", "photo": "https://cdn.sofifa.net/players/158/023/24_360.png"},
@@ -191,9 +191,9 @@ ace_players = {
     "코트디부아르": {"name": "프랑크 케시에", "photo": "https://cdn.sofifa.net/players/235/569/24_360.png"},
     "카보베르데": {"name": "라이언 멘데스", "photo": "https://cdn.sofifa.net/players/205/498/24_360.png"},
     # [로컬 파일 사용]
-    "이집트": {"name": "모하메드 살라", "photo": "images/egypt.jpg"},
+    "이집트": {"name": "모하메드 살라", "photo": "images/egypt.gif"},
     "가나": {"name": "모하메드 쿠두스", "photo": "images/ghana.jpg"},
-    "튀니지": {"name": "유세프 므사크니", "photo": "images/tunisia.jpg"},
+    "튀니지": {"name": "유세프 므사크니", "photo": "images/tunisia.webp"},
     "남아프리카공화국": {"name": "퍼시 타우", "photo": "images/south_africa.jpg"},
 
     # [유럽] (기존 URL 유지)
@@ -219,21 +219,34 @@ target_team = st.selectbox("어떤 팀의 에이스가 궁금해?", df["국가"]
 if target_team in ace_players:
     player = ace_players[target_team]
     
-    c1, c2 = st.columns([1, 2]) 
+    # 레이아웃 나누기 (사진 칸, 설명 칸)
+    c1, c2 = st.columns([1, 2])
     
     with c1:
-        # [수정] 그냥 url을 넣는 게 아니라, 함수로 이미지를 가져와서 넣음
-        image_data = load_image(player["photo"])
-        
-        if image_data:
-            st.image(image_data, width= 800)
+        # -------------------------------------------------------
+        # [핵심] 사진이 리스트(여러 장)인지 문자열(한 장)인지 확인
+        # -------------------------------------------------------
+        if isinstance(player["photo"], list):          #사진 여러장 넣고 싶어서 플레이어 데이터에 리스트로 추가
+            # 리스트라면? -> 반복문 돌면서 다 보여주기
+            for p in player["photo"]:
+                img_data = load_image(p)
+                if img_data:
+                    st.image(img_data, width=150)
+                else:
+                    st.error("이미지 로딩 실패")
+                    
         else:
-            # 이미지를 못 가져왔을 때 보여줄 대체 텍스트나 아이콘
-            st.error("이미지 로딩 실패")
-        
+            # 리스트가 아니라면(한 장)? -> 그냥 보여주기
+            img_data = load_image(player["photo"])
+            if img_data:
+                st.image(img_data, width=150)
+            else:
+                st.error("이미지 로딩 실패")
+        # -------------------------------------------------------
+
     with c2:
         st.subheader(f"이름: {player['name']}")
-        st.write(f"**{target_team}**의 운명을 짊어진 에이스야!")
+        st.write(f"**{target_team}**의 핵심 선수!")
         
 else:
     st.info(f"📢 {target_team}의 선수 정보는 아직 업데이트 중이란다.")
@@ -296,6 +309,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
