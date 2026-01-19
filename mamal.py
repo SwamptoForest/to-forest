@@ -187,7 +187,7 @@ ace_players = {
     "퀴라소": {"name": "딕 아드보카트(감독)", "photo": "images/curacao.jpg"},
 
     # [남미] (기존 URL 유지)
-    "아르헨티나": {"name": "리오넬 메시", "photo": ["messi01.gif", "images/messi02.gif"]},
+    "아르헨티나": {"name": "리오넬 메시", "photo": ["images/messi01.gif", "images/messi02.gif"]},
     "브라질": {"name": "비니시우스 주니오르", "photo": "https://cdn.sofifa.net/players/238/794/24_360.png"},
     "우루과이": {"name": "페데리코 발베르데", "photo": "https://cdn.sofifa.net/players/239/053/24_360.png"},
     "콜롬비아": {"name": "루이스 디아스", "photo": "https://cdn.sofifa.net/players/241/084/24_360.png"},
@@ -319,6 +319,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
