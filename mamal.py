@@ -187,7 +187,7 @@ ace_players = {
     "퀴라소": {"name": "딕 아드보카트(감독)", "photo": "images/curacao.jpg"},
 
     # [남미] (기존 URL 유지)
-    "아르헨티나": {"name": "리오넬 메시", "photo": "https://cdn.sofifa.net/players/158/023/24_360.png"},
+    "아르헨티나": {"name": "리오넬 메시", "photo": ["messi01.gif", "images/messi02.gif"]},
     "브라질": {"name": "비니시우스 주니오르", "photo": "https://cdn.sofifa.net/players/238/794/24_360.png"},
     "우루과이": {"name": "페데리코 발베르데", "photo": "https://cdn.sofifa.net/players/239/053/24_360.png"},
     "콜롬비아": {"name": "루이스 디아스", "photo": "https://cdn.sofifa.net/players/241/084/24_360.png"},
@@ -241,7 +241,7 @@ if target_team in ace_players:
             for p in player["photo"]:
                 img_data = load_image(p)
                 if img_data:
-                    st.image(img_data, width=900)
+                    st.image(img_data, width=1000)
                 else:
                     st.error("이미지 로딩 실패")
                     
@@ -249,14 +249,14 @@ if target_team in ace_players:
             # 리스트가 아니라면(한 장)? -> 그냥 보여주기
             img_data = load_image(player["photo"])
             if img_data:
-                st.image(img_data, width=900)
+                st.image(img_data, width=1000)
             else:
                 st.error("이미지 로딩 실패")
         # -------------------------------------------------------
 
     with c2:
         st.subheader(f"이름: {player['name']}")
-        st.write(f"**{target_team}**의 핵심 선수!")
+        st.markdown(f"#### **{target_team}**의 운명을 짊어진 에이스야!")
         
 else:
     st.info(f"📢 {target_team}의 선수 정보는 아직 업데이트 중이란다.")
@@ -319,6 +319,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
