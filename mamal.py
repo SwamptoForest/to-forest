@@ -91,7 +91,7 @@ st.sidebar.header("필터 및 강조 설정")
 
 # [과제 필수] 체크박스: 의미 있는 데이터 필터링
 highlight_newbie = st.sidebar.checkbox("🌱 첫 진출국 강조 (연두색)")
-highlight_semifinal = st.sidebar.checkbox("👑 역대 4강 경험국 강조 (보라색)") # 텍스트 변경
+highlight_semifinal = st.sidebar.checkbox("👑 역대 4강 경험국 강조 (빗살)") # 텍스트 변경
 
 # 기존 기능 유지
 selected_group = st.sidebar.multiselect("확인하고 싶은 조를 선택해:", df["조"].unique(), default=[])
@@ -196,7 +196,7 @@ def load_image(image_source):
             return None  # 이번에는 gif가 움직이질 않아서 재수정, 제미나이가 만들어주긴 했지만 위에서 정의된 함수가 여러 사진을 온전히 나오게 하기 위해서 가장 많이 수정한 코드.
 # 특정 국가 검색 기능
 st.divider()
-st.header(" 💪국가별 핵심 선수💥💫 ") #제미나이가 확률만 반복해서 에이스로 바꿈
+st.header(" 💪국가별 핵심 선수💥💫 ") #제미나이가 진출 확률만 반복해서 에이스로 바꿈
 
 ace_players = {
     # [아시아]
@@ -354,6 +354,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
