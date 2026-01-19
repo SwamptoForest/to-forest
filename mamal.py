@@ -6,6 +6,7 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import platform
+import os
 #폰트 인식 못해서 수정함
 plt.rcParams['font.family'] = 'NanumGothic'
 plt.rcParams['axes.unicode_minus'] = False
@@ -131,60 +132,71 @@ else:
 # [수정] 국가명 (단위 없이 이름만 세로로)
 df['국가_세로'] = df['국가'].apply(lambda x: '\n'.join(list(x)))
 
+# 얘가 위에서 가져온 라이브러리들을 막 섞어쓰면서 사진을 온전히 모셔오게 하려고 만든 함수(제미나이가 만듬) # 였으나 핫링크 차단? 이라는 웹사이트들의 사진 긁어오기 차단 때문에 일부는 로컬 파일 업로드로 대체하기로 함.
+def load_image(image_source):
+    # 1. 내 컴퓨터에 있는 파일인지 확인 (images/ 로 시작하는 경우) # 참고로 내가 단 주석과 제미나이가 설명해준다고 단 주석이 마구 섞여있음.
+    if not image_source.startswith("http"):
+        if os.path.exists(image_source):
+            return Image.open(image_source)
+        else:
+            return None # 파일이 없으면 None 반환
+            
+    # 2. 인터넷 주소(URL)인 경우
+    else:
+        try:
+            headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
+            response = requests.get(image_source, headers=headers, timeout=3)
+            return Image.open(BytesIO(response.content))
+        except:
+            return None
 # 특정 국가 검색 기능
-def load_image(url): # 얘가 위에서 가져온 라이브러리들을 막 섞어쓰면서 사진을 온전히 모셔오게 하려고 만든 함수(제미나이가 만듬)
-    try:
-        # "나 봇 아니고 윈도우 쓰는 사람이야~"라고 속이는 명찰(Header) # 참고로 내가 단 주석과 제미나이가 설명해준다고 단 주석이 마구 섞여있음.
-        headers = {'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36'}
-        response = requests.get(url, headers=headers)
-        img = Image.open(BytesIO(response.content))
-        return img
-    except Exception as e:
-        return None # 실패하면 아무것도 안 돌려줌
-
 st.divider()
 st.header(" 💪국가별 핵심 선수💥💫 ") #제미나이가 확률만 반복해서 에이스로 바꿈
 
 ace_players = {
-    # ---------------- [수정 대상: 안 나온다던 10개국 + 멕시코] ----------------
-    
-    # [북중미]
-    "멕시코": {"name": "기예르모 오초아", "photo": "https://img.a.transfermarkt.technology/portrait/big/22187-1663838618.jpg"},
-    "퀴라소": {"name": "레안드로 바쿠나", "photo": "https://img.a.transfermarkt.technology/portrait/big/103410-1663838351.jpg"},
-
-    # [아시아/중동]
-    "이란": {"name": "메흐디 타레미", "photo": "https://img.a.transfermarkt.technology/portrait/big/199550-1694590721.jpg"},
-    "우즈베키스탄": {"name": "엘도르 쇼무로도프", "photo": "https://img.a.transfermarkt.technology/portrait/big/434888-1701097626.jpg"},
-    "카타르": {"name": "아크람 아피프", "photo": "https://img.a.transfermarkt.technology/portrait/big/317634-1546000657.jpg"},
-    "사우디아라비아": {"name": "살렘 알다우사리", "photo": "https://img.a.transfermarkt.technology/portrait/big/247781-1546000880.jpg"},
-    "요르단": {"name": "무사 알타마리", "photo": "https://img.a.transfermarkt.technology/portrait/big/381812-1682929498.jpg"},
-
-    # [아프리카]
-    "이집트": {"name": "모하메드 살라", "photo": "https://img.a.transfermarkt.technology/portrait/big/148455-1728372342.jpg"},
-    "가나": {"name": "모하메드 쿠두스", "photo": "https://img.a.transfermarkt.technology/portrait/big/611800-1696432709.jpg"},
-    "튀니지": {"name": "유세프 므사크니", "photo": "https://img.a.transfermarkt.technology/portrait/big/98746-1459844556.jpg"},
-    "남아프리카공화국": {"name": "퍼시 타우", "photo": "https://img.a.transfermarkt.technology/portrait/big/376083-1673342482.jpg"},
-
-    # ---------------- [기존 유지: 잘 나오던 국가들] ----------------
+    # [아시아]
     "대한민국": {"name": "손흥민", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p85971.png"},
     "중국": {"name": "하후돈", "photo": "https://img.youtube.com/vi/6cammEr9gPM/hqdefault.jpg"},
     "일본": {"name": "미토마 카오루", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p451340.png"},
     "호주": {"name": "매튜 라이언", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p109533.png"},
+    
+    # [로컬 파일 사용 - 다운로드 필요]
+    "이란": {"name": "메흐디 타레미", "photo": "images/iran.jpg"},
+    "우즈베키스탄": {"name": "엘도르 쇼무로도프", "photo": "images/uzbekistan.jpg"},
+    "카타르": {"name": "아크람 아피프", "photo": "images/qatar.jpg"},
+    "사우디아라비아": {"name": "살렘 알다우사리", "photo": "images/saudi.jpg"},
+    "요르단": {"name": "무사 알타마리", "photo": "images/jordan.jpg"},
+
+    # [북중미]
     "미국": {"name": "크리스천 풀리식", "photo": "https://cdn.sofifa.net/players/227/796/24_360.png"},
     "캐나다": {"name": "알폰소 데이비스", "photo": "https://cdn.sofifa.net/players/234/396/24_360.png"},
     "파나마": {"name": "아달베르토 카라스키야", "photo": "https://cdn.sofifa.net/players/245/037/24_360.png"},
     "아이티": {"name": "뒤캉 나종", "photo": "https://cdn.sofifa.net/players/225/956/24_360.png"},
+    # [로컬 파일 사용]
+    "멕시코": {"name": "기예르모 오초아", "photo": "images/mexico.webp"}, 
+    "퀴라소": {"name": "레안드로 바쿠나", "photo": "images/curacao.jpg"},
+
+    # [남미] (기존 URL 유지)
     "아르헨티나": {"name": "리오넬 메시", "photo": "https://cdn.sofifa.net/players/158/023/24_360.png"},
     "브라질": {"name": "비니시우스 주니오르", "photo": "https://cdn.sofifa.net/players/238/794/24_360.png"},
     "우루과이": {"name": "페데리코 발베르데", "photo": "https://cdn.sofifa.net/players/239/053/24_360.png"},
     "콜롬비아": {"name": "루이스 디아스", "photo": "https://cdn.sofifa.net/players/241/084/24_360.png"},
     "에콰도르": {"name": "모이세스 카이세도", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p486666.png"},
     "파라과이": {"name": "미구엘 알미론", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p179018.png"},
+
+    # [아프리카] 
     "세네갈": {"name": "사디오 마네", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p110979.png"},
     "모로코": {"name": "아크라프 하키미", "photo": "https://cdn.sofifa.net/players/235/212/24_360.png"},
     "알제리": {"name": "리야드 마레즈", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p103025.png"},
     "코트디부아르": {"name": "프랑크 케시에", "photo": "https://cdn.sofifa.net/players/235/569/24_360.png"},
     "카보베르데": {"name": "라이언 멘데스", "photo": "https://cdn.sofifa.net/players/205/498/24_360.png"},
+    # [로컬 파일 사용]
+    "이집트": {"name": "모하메드 살라", "photo": "images/egypt.jpg"},
+    "가나": {"name": "모하메드 쿠두스", "photo": "images/ghana.jpg"},
+    "튀니지": {"name": "유세프 므사크니", "photo": "images/tunisia.jpg"},
+    "남아프리카공화국": {"name": "퍼시 타우", "photo": "images/south_africa.jpg"},
+
+    # [유럽] (기존 URL 유지)
     "잉글랜드": {"name": "해리 케인", "photo": "https://cdn.sofifa.net/players/202/126/24_360.png"},
     "프랑스": {"name": "킬리안 음바페", "photo": "https://cdn.sofifa.net/players/231/747/24_360.png"},
     "독일": {"name": "자말 무시알라", "photo": "https://cdn.sofifa.net/players/256/790/24_360.png"},
@@ -197,9 +209,10 @@ ace_players = {
     "노르웨이": {"name": "엘링 홀란드", "photo": "https://cdn.sofifa.net/players/239/085/24_360.png"},
     "스코틀랜드": {"name": "스콧 맥토미니", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p195851.png"},
     "스위스": {"name": "그라니트 자카", "photo": "https://cdn.sofifa.net/players/198/219/24_360.png"},
+
+    # [오세아니아]
     "뉴질랜드": {"name": "크리스 우드", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p54469.png"},
 }
-
 
 target_team = st.selectbox("어떤 팀의 에이스가 궁금해?", df["국가"].unique())
 
@@ -283,6 +296,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
