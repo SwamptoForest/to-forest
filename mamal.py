@@ -79,56 +79,87 @@ data = {
 }
 
 df = pd.DataFrame(data)
+newbie_list = ["우즈베키스탄", "요르단", "카보베르데", "퀴라소"]
+semifinal_list = [
+    "브라질", "아르헨티나", "프랑스", "독일", "잉글랜드", "스페인", "포르투갈", 
+    "네덜란드", "크로아티아", "벨기에", "우루과이", "대한민국", "모로코", 
+    "오스트리아", "미국"
+]
 
 # 사이드바에서 조별 필터링 기능 추가
-st.sidebar.header("필터 설정")
+st.sidebar.header("필터 및 강조 설정")
+
+# [과제 필수] 체크박스: 의미 있는 데이터 필터링
+highlight_newbie = st.sidebar.checkbox("🌱 첫 진출국 강조 (연두색)")
+highlight_semifinal = st.sidebar.checkbox("👑 역대 4강 경험국 강조 (보라색)") # 텍스트 변경
+
+# 기존 기능 유지
 selected_group = st.sidebar.multiselect("확인하고 싶은 조를 선택해:", df["조"].unique(), default=[])
 
-# 필터링된 데이터
+
+# --- 데이터 필터링 로직 (여긴 그대로 둬도 됨) ---
+filtered_df = df.copy()
+
 if selected_group:
-    filtered_df = df[df["조"].isin(selected_group)].sort_values(by="진출 확률(%)", ascending=False)
-# 메인 화면 구성
-    col1, col2 = st.columns([1, 1])
+    filtered_df = filtered_df[filtered_df["조"].isin(selected_group)]
 
-    with col1:
-        st.subheader("📊 국가별 진출 확률 데이터")
-        st.dataframe(filtered_df, use_container_width=True)
+filtered_df = filtered_df.sort_values(by="진출 확률(%)", ascending=False)
 
-    with col2:
-        st.subheader("📈 시각화 차트")
+
+# --- 메인 화면 구성 및 색상 로직 (수정됨) ---
+col1, col2 = st.columns([1, 1])
+
+with col1:
+    st.subheader("📊 국가별 진출 확률 데이터")
+    st.dataframe(filtered_df, use_container_width=True)
+
+with col2:
+    st.subheader("📈 시각화 차트")
+    
+    if not filtered_df.empty:
+        # 국가명 세로쓰기
+        filtered_df['국가_세로'] = filtered_df['국가'].apply(lambda x: '\n'.join(list(x)))
         
-        if not filtered_df.empty:
-            filtered_df['국가_세로'] = filtered_df['국가'].apply(lambda x: '\n'.join(list(x))) #
-            unique_groups = df['조'].unique()
-            # tab10 같은 컬러맵을 사용해서 조별로 고유 색상 배정
-            colormap = plt.cm.get_cmap('tab10', len(unique_groups))
+        unique_groups = df['조'].unique()
+        colormap = plt.cm.get_cmap('tab10', len(unique_groups))
+        
+        # ----------------------------------------------------------------
+        # [수정된 로직] 4강 리스트 적용
+        # ----------------------------------------------------------------
+        bar_colors = []
+        
+        for idx, row in filtered_df.iterrows():
+            country = row['국가']
+            group = row['조']
             
-            bar_colors = []
-            for group in filtered_df['조']:
-                if group == '조조':  # 조조
-                    bar_colors.append('#FFD700') # Gold color hex code
+            # 1. 뉴비 강조 (연두색)
+            if highlight_newbie and country in newbie_list:
+                bar_colors.append('#00FF00') 
+                
+            # 2. 4강 경험국 강조 (보라색 - 왕족 느낌!)
+            elif highlight_semifinal and country in semifinal_list:
+                bar_colors.append('#8A2BE2') # BlueViolet 색상
+                
+            # 3. 기본 조별 색상
+            else:
+                if group == '조조':
+                    bar_colors.append('#FFD700')
                 else:
-                    # 전체 조 리스트에서 현재 조의 인덱스를 찾아 색상 매핑
                     group_index = list(unique_groups).index(group)
                     bar_colors.append(colormap(group_index))
+        # ----------------------------------------------------------------
 
-            # 3. 그래프 그리기 (데이터 소스를 filtered_df로 변경)
-            fig, ax = plt.subplots(figsize=(10, 6))
-            
-            # x축, y축 데이터와 색상(color=bar_colors) 지정
-            bars = ax.bar(filtered_df['국가_세로'], filtered_df['진출 확률(%)'], color=bar_colors)
-            
-            # 4. 축 라벨 및 설정
-            y_label = "진\n출\n확\n률\n(%)"
-            ax.set_ylabel(y_label, rotation=0, labelpad=20, verticalalignment='center') # 세로 쓰기 유지
-            
-            # y축 범위 설정 (0~100% 느낌을 살리려면 필요시 추가, 지금은 자동)
-            ax.set_ylim(0, 100) 
-            
-            # 그래프 표시
-            st.pyplot(fig, use_container_width=True)
-else:
-    st.info("🤷‍♂️조를 선택하면 알려줄거야!👍")
+        # 차트 그리기
+        fig, ax = plt.subplots(figsize=(10, 6))
+        bars = ax.bar(filtered_df['국가_세로'], filtered_df['진출 확률(%)'], color=bar_colors)
+        
+        # (축 설정 등 나머지 코드는 기존과 동일하게 유지)
+        y_label = "진\n출\n확\n률\n(%)"
+        ax.set_ylabel(y_label, rotation=0, labelpad=20, verticalalignment='center')
+        ax.set_ylim(0, 100)
+        st.pyplot(fig, use_container_width=True)
+    else:
+        st.info("🤷‍♂️조를 선택하면 알려줄거야!👍")
 # [수정] 국가명 (단위 없이 이름만 세로로)
 df['국가_세로'] = df['국가'].apply(lambda x: '\n'.join(list(x)))
 
@@ -319,6 +350,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
