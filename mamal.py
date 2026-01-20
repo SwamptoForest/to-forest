@@ -14,7 +14,9 @@ plt.rcParams['axes.unicode_minus'] = False
 st.set_page_config(layout="wide")
 
 # 앱 제목
-st.markdown('<h1 style="white-space: nowrap;">🏆 :blue[2026 월드컵 3]:red[2강 진출 ⚽ 확률]</h1>', unsafe_allow_html=True)
+st.markdown('''<h1 style="white-space: nowrap;">🏆<span style="color: blue;">2026 월드컵 3</span> <span style="color: red;">2강 진출⚽확률</span>
+    </h1>''', unsafe_allow_html=True)
+
 st.write("확정된 42개국 대상 배당률 기반 확률 변환 데이터로 제작")
 st.write("[주의: 통계 모델(허위)에 따른 추정치임]")
 data = {
@@ -91,29 +93,31 @@ st.sidebar.header("필터 및 강조 설정")
 
 # [과제 필수] 체크박스: 의미 있는 데이터 필터링
 highlight_newbie = st.sidebar.checkbox("🌱 첫 진출국 강조 (연두색)")
-highlight_semifinal = st.sidebar.checkbox("👑 역대 4강 경험국 강조 (빗살)") # 텍스트 변경
+highlight_semifinal = st.sidebar.checkbox("👑 역대 4강 경험국 강조 (빗살)") # 식별 가능하게 변경
 
 # 기존 기능 유지
 selected_group = st.sidebar.multiselect("확인하고 싶은 조를 선택해:", df["조"].unique(), default=[])
 
 
-# --- 데이터 필터링 로직 (여긴 그대로 둬도 됨) ---
+
 filtered_df = df.copy()
+# --- 데이터 필터링 로직 (최종_진짜_완성.ver) ---
 
 if selected_group:
-    # 1. 조를 하나라도 선택했을 때: 그 조에 해당하는 데이터만 가져온다.
+    # 1. 조를 선택했을 때: 그 조에 해당하는 데이터만 가져온다.
     filtered_df = df[df["조"].isin(selected_group)]
     
-    # 2. [슬라이더 적용] 선택된 데이터 안에서 확률 필터링
-    # (아까 추가한 슬라이더 변수명이 prob_filter 라고 가정)
-    filtered_df = filtered_df[filtered_df["진출 확률(%)"] >= prob_filter]
+    # [확인] 여기에 있던 prob_filter(슬라이더) 관련 코드는 내가 삭제했어! 
+    # 그러니까 이제 에러 날 구석이 없어. 안심해.
     
-    # 3. [정렬] 확률 높은 순서대로
+    # 2. 정렬: 확률 높은 순서대로
     filtered_df = filtered_df.sort_values(by="진출 확률(%)", ascending=False)
 
 else:
+    # 3. 조를 하나도 안 골랐을 때: 빈 껍데기(빈 데이터프레임)만 남긴다.
     filtered_df = pd.DataFrame(columns=df.columns)
 
+# ----------------------------------------
 # --- 메인 화면 구성 및 색상 로직 (수정됨) ---
 col1, col2 = st.columns([1, 1])
 
@@ -362,6 +366,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
