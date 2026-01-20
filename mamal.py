@@ -7,16 +7,16 @@ import matplotlib.pyplot as plt
 import matplotlib.cm as cm
 import platform
 import os
-#폰트 인식 못해서 수정함
+#폰트 인식 못해서 수정함, 덕지덕지 붙이다보니 이제는 필요없는 것도 있을 듯 한데 몰라서 못뺌.
 plt.rcParams['font.family'] = 'NanumGothic'
 plt.rcParams['axes.unicode_minus'] = False
 
 st.set_page_config(layout="wide")
 
 # 앱 제목
-st.markdown('<h1 style="white-space: nowrap;">🏆 2026 월드컵 32강 진출 확률</h1>', unsafe_allow_html=True)
+st.markdown('<h1 style="white-space: nowrap;">🏆 :blue[2026 월드컵 3]:red[2강 진출 ⚽ 확률]</h1>', unsafe_allow_html=True)
 st.write("확정된 42개국 대상 배당률 기반 확률 변환 데이터로 제작")
-st.write("[주의: 통계 모델에 따른 추정치임]")
+st.write("[주의: 통계 모델(허위)에 따른 추정치임]")
 data = {
     "국가": ["멕시코", "남아프리카공화국", "대한민국",
         
@@ -101,10 +101,18 @@ selected_group = st.sidebar.multiselect("확인하고 싶은 조를 선택해:",
 filtered_df = df.copy()
 
 if selected_group:
-    filtered_df = filtered_df[filtered_df["조"].isin(selected_group)]
+    # 1. 조를 하나라도 선택했을 때: 그 조에 해당하는 데이터만 가져온다.
+    filtered_df = df[df["조"].isin(selected_group)]
+    
+    # 2. [슬라이더 적용] 선택된 데이터 안에서 확률 필터링
+    # (아까 추가한 슬라이더 변수명이 prob_filter 라고 가정)
+    filtered_df = filtered_df[filtered_df["진출 확률(%)"] >= prob_filter]
+    
+    # 3. [정렬] 확률 높은 순서대로
+    filtered_df = filtered_df.sort_values(by="진출 확률(%)", ascending=False)
 
-filtered_df = filtered_df.sort_values(by="진출 확률(%)", ascending=False)
-
+else:
+    filtered_df = pd.DataFrame(columns=df.columns)
 
 # --- 메인 화면 구성 및 색상 로직 (수정됨) ---
 col1, col2 = st.columns([1, 1])
@@ -354,6 +362,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
