@@ -14,7 +14,7 @@ plt.rcParams['axes.unicode_minus'] = False
 st.set_page_config(layout="wide")
 
 # 앱 제목
-st.markdown('''<h1 style="white-space: nowrap;">🏆<span style="color: blue;">2026 월드컵 3</span> <span style="color: red;">2강 진출⚽확률</span>
+st.markdown('''<h1 style="white-space: nowrap;">🏆<span style="color: blue;">2026 월드컵 3</span><span style="color: red;">2강 진출⚽확률</span>
     </h1>''', unsafe_allow_html=True)
 
 st.write("확정된 42개국 대상 배당률 기반 확률 변환 데이터로 제작")
@@ -238,7 +238,7 @@ ace_players = {
     "브라질": {"name": "비니시우스 주니오르", "photo": "https://cdn.sofifa.net/players/238/794/24_360.png"},
     "우루과이": {"name": "페데리코 발베르데", "photo": "https://cdn.sofifa.net/players/239/053/24_360.png"},
     "콜롬비아": {"name": "루이스 디아스", "photo": "https://cdn.sofifa.net/players/241/084/24_360.png"},
-    "에콰도르": {"name": "모이세스 카이세도", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p486666.png"},
+    "에콰도르": {"name": "모이세스 카이세도", "photo": "images/equador.jpg"},
     "파라과이": {"name": "미구엘 알미론", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p179018.png"},
 
     # [아프리카] 
@@ -366,6 +366,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
