@@ -19,6 +19,7 @@ st.markdown('''<h1 style="white-space: nowrap;">🏆<span style="color: blue;">2
 
 st.write("확정된 42개국 대상 배당률 기반 확률 변환 데이터로 제작")
 st.write("[주의: 통계 모델(허위)에 따른 추정치임]")
+print('\n\n\n')
 data = {
     "국가": ["멕시코", "남아프리카공화국", "대한민국",
         
@@ -206,6 +207,8 @@ def load_image(image_source):
             return Image.open(BytesIO(response.content))
         except:
             return None  # 이번에는 gif가 움직이질 않아서 재수정, 제미나이가 만들어주긴 했지만 위에서 정의된 함수가 여러 사진을 온전히 나오게 하기 위해서 가장 많이 수정한 코드.
+
+print('\n\n\n\n\n')
 # 특정 국가 검색 기능
 st.divider()
 st.header(" 💪국가별 핵심 선수💥💫 ") #제미나이가 진출 확률만 반복해서 에이스로 바꿈
@@ -481,38 +484,11 @@ if target_team in ace_players:
 else:
     st.info(f"📢 {target_team}의 선수 정보는 아직 업데이트 중이란다.")
 
+<br>
+<br>
+<br>
+print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
-
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
-st.write('')
 if st.button('축구 안좋아할 경우 누르기'):
     st.balloons()
     st.balloons()
@@ -539,6 +515,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
