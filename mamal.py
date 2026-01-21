@@ -484,9 +484,7 @@ if target_team in ace_players:
 else:
     st.info(f"📢 {target_team}의 선수 정보는 아직 업데이트 중이란다.")
 
-<br>
-<br>
-<br>
+
 print("\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n")
 
 if st.button('축구 안좋아할 경우 누르기'):
@@ -515,6 +513,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
