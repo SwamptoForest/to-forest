@@ -212,65 +212,236 @@ st.header(" 💪국가별 핵심 선수💥💫 ") #제미나이가 진출 확�
 
 ace_players = {
     # [아시아]
-    "대한민국": {"name": "손흥민", "photo": ["https://resources.premierleague.com/premierleague/photos/players/250x250/p85971.png", "images/korea.gif"]},
-    "중국": {"name": "하후돈", "photo": "images/china.jpg"},
-    "일본": {"name": "미토마 카오루", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p451340.png"},
-    "호주": {"name": "매튜 라이언", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p109533.png"},
+    "대한민국": {
+        "name": "손흥민",
+        "photo": ["https://resources.premierleague.com/premierleague/photos/players/250x250/p85971.png", "images/korea.gif"],
+        "club": "LAFC (미국)"
+    },
+    "중국": {
+        "name": "하후돈",
+        "photo": "images/china.jpg",
+        "club": "위나라 (중국)"
+    },
+    "일본": {
+        "name": "미토마 카오루",
+        "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p451340.png",
+        "club": "브라이튼 앤 호브 알비온 (잉글랜드)"
+    },
+    "호주": {
+        "name": "매튜 라이언",
+        "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p109533.png",
+        "club": "레반테 UD (스페인)"
+    },
     
     # [로컬 파일 사용 - 다운로드 필요]
-    "이란": {"name": "메흐디 타레미", "photo": "images/iran.jpg"},
-    "우즈베키스탄": {"name": "엘도르 쇼무로도프", "photo": "images/uzbekistan.jpg"},
-    "카타르": {"name": "아크람 아피프", "photo": "images/qatar.webp"},
-    "사우디아라비아": {"name": "살렘 알다우사리", "photo": "images/saudi.jpg"},
-    "요르단": {"name": "무사 알타마리", "photo": "images/jordan.jpg"},
+    "이란": {
+        "name": "메흐디 타레미",
+        "photo": "images/iran.jpg",
+        "club": "인터 밀란 (이탈리아)"
+    },
+    "우즈베키스탄": {
+        "name": "엘도르 쇼무로도프",
+        "photo": "images/uzbekistan.jpg",
+        "club": "이스탄불 바샥셰히르 (튀르키예)"
+    },
+    "카타르": {
+        "name": "아크람 아피프",
+        "photo": "images/qatar.webp",
+        "club": "알 사드 SC (카타르)"
+    },
+    "사우디아라비아": {
+        "name": "살렘 알다우사리",
+        "photo": "images/saudi.jpg",
+        "club": "알 힐랄 SFC (사우디아라비아)"
+    },
+    "요르단": {
+        "name": "무사 알타마리",
+        "photo": "images/jordan.jpg",
+        "club": "몽펠리에 HSC (프랑스)"
+    },
 
     # [북중미]
-    "미국": {"name": "크리스천 풀리식", "photo": "https://cdn.sofifa.net/players/227/796/24_360.png"},
-    "캐나다": {"name": "알폰소 데이비스", "photo": "https://cdn.sofifa.net/players/234/396/24_360.png"},
-    "파나마": {"name": "아달베르토 카라스키야", "photo": "https://cdn.sofifa.net/players/245/037/24_360.png"},
-    "아이티": {"name": "뒤캉 나종", "photo": "https://cdn.sofifa.net/players/225/956/24_360.png"},
+    "미국": {
+        "name": "크리스천 풀리식",
+        "photo": "https://cdn.sofifa.net/players/227/796/24_360.png",
+        "club": "AC 밀란 (이탈리아)"
+    },
+    "캐나다": {
+        "name": "알폰소 데이비스",
+        "photo": "https://cdn.sofifa.net/players/234/396/24_360.png",
+        "club": "바이에른 뮌헨 (독일)"
+    },
+    "파나마": {
+        "name": "아달베르토 카라스키야",
+        "photo": "https://cdn.sofifa.net/players/245/037/24_360.png",
+        "club": "휴스턴 다이너모 (미국)"
+    },
+    "아이티": {
+        "name": "뒤캉 나종",
+        "photo": "https://cdn.sofifa.net/players/225/956/24_360.png",
+        "club": "에스테그랄 FC (이란)"
+    },
     # [로컬 파일 사용]
-    "멕시코": {"name": "기예르모 오초아", "photo": "images/mexico.webp"}, 
-    "퀴라소": {"name": "딕 아드보카트(감독)", "photo": "images/curacao.jpg"},
+    "멕시코": {
+        "name": "기예르모 오초아",
+        "photo": "images/mexico.webp",
+        "club": "AEL 리마솔 (키프로스)"
+    }, 
+    "퀴라소": {
+        "name": "딕 아드보카트",
+        "photo": "images/curacao.jpg",
+        "club": "퀴라소 대표팀 (감독)"
+    },
 
-    # [남미] (기존 URL 유지)
-    "아르헨티나": {"name": "리오넬 메시", "photo": ["images/messi01.gif", "images/messi02.gif"]},
-    "브라질": {"name": "비니시우스 주니오르", "photo": "https://cdn.sofifa.net/players/238/794/24_360.png"},
-    "우루과이": {"name": "페데리코 발베르데", "photo": "https://cdn.sofifa.net/players/239/053/24_360.png"},
-    "콜롬비아": {"name": "루이스 디아스", "photo": "https://cdn.sofifa.net/players/241/084/24_360.png"},
-    "에콰도르": {"name": "모이세스 카이세도", "photo": "images/equador.jpg"},
-    "파라과이": {"name": "미구엘 알미론", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p179018.png"},
+    # [남미]
+    "아르헨티나": {
+        "name": "리오넬 메시",
+        "photo": ["images/messi01.gif", "images/messi02.gif"],
+        "club": "인터 마이애미 CF (미국)"
+    },
+    "브라질": {
+        "name": "비니시우스 주니오르",
+        "photo": "https://cdn.sofifa.net/players/238/794/24_360.png",
+        "club": "레알 마드리드 (스페인)"
+    },
+    "우루과이": {
+        "name": "페데리코 발베르데",
+        "photo": "https://cdn.sofifa.net/players/239/053/24_360.png",
+        "club": "레알 마드리드 (스페인)"
+    },
+    "콜롬비아": {
+        "name": "루이스 디아스",
+        "photo": "https://cdn.sofifa.net/players/241/084/24_360.png",
+        "club": "리버풀 FC (잉글랜드)"
+    },
+    "에콰도르": {
+        "name": "모이세스 카이세도",
+        "photo": "images/equador.jpg",
+        "club": "첼시 FC (잉글랜드)"
+    },
+    "파라과이": {
+        "name": "미구엘 알미론",
+        "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p179018.png",
+        "club": "뉴캐슬 유나이티드 (잉글랜드)"
+    },
 
     # [아프리카] 
-    "세네갈": {"name": "사디오 마네", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p110979.png"},
-    "모로코": {"name": "아크라프 하키미", "photo": "https://cdn.sofifa.net/players/235/212/24_360.png"},
-    "알제리": {"name": "리야드 마레즈", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p103025.png"},
-    "코트디부아르": {"name": "프랑크 케시에", "photo": "https://cdn.sofifa.net/players/235/569/24_360.png"},
-    "카보베르데": {"name": "라이언 멘데스", "photo": "https://cdn.sofifa.net/players/205/498/24_360.png"},
+    "세네갈": {
+        "name": "사디오 마네",
+        "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p110979.png",
+        "club": "알 나스르 FC (사우디아라비아)"
+    },
+    "모로코": {
+        "name": "아크라프 하키미",
+        "photo": "https://cdn.sofifa.net/players/235/212/24_360.png",
+        "club": "파리 생제르맹 FC (프랑스)"
+    },
+    "알제리": {
+        "name": "리야드 마레즈",
+        "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p103025.png",
+        "club": "알 아흘리 SFC (사우디아라비아)"
+    },
+    "코트디부아르": {
+        "name": "프랑크 케시에",
+        "photo": "https://cdn.sofifa.net/players/235/569/24_360.png",
+        "club": "알 아흘리 SFC (사우디아라비아)"
+    },
+    "카보베르데": {
+        "name": "라이언 멘데스",
+        "photo": "https://cdn.sofifa.net/players/205/498/24_360.png",
+        "club": "으디르 FK (튀르키예)"
+    },
     # [로컬 파일 사용]
-    "이집트": {"name": "모하메드 살라", "photo": "images/egypt.gif"},
-    "가나": {"name": "모하메드 쿠두스", "photo": "images/ghana.jpg"},
-    "튀니지": {"name": "유세프 므사크니", "photo": "images/tunisia.webp"},
-    "남아프리카공화국": {"name": "퍼시 타우", "photo": "images/south_africa.jpg"},
+    "이집트": {
+        "name": "모하메드 살라",
+        "photo": "images/egypt.gif",
+        "club": "리버풀 FC (잉글랜드)"
+    },
+    "가나": {
+        "name": "모하메드 쿠두스",
+        "photo": "images/ghana.jpg",
+        "club": "웨스트햄 유나이티드 (잉글랜드)"
+    },
+    "튀니지": {
+        "name": "유세프 므사크니",
+        "photo": "images/tunisia.webp",
+        "club": "알 아라비 SC (카타르)"
+    },
+    "남아프리카공화국": {
+        "name": "퍼시 타우",
+        "photo": "images/south_africa.jpg",
+        "club": "알 아흘리 SC (이집트)"
+    },
 
-    # [유럽] (기존 URL 유지)
-    "잉글랜드": {"name": "해리 케인", "photo": "https://cdn.sofifa.net/players/202/126/24_360.png"},
-    "프랑스": {"name": "킬리안 음바페", "photo": "https://cdn.sofifa.net/players/231/747/24_360.png"},
-    "독일": {"name": "자말 무시알라", "photo": "https://cdn.sofifa.net/players/256/790/24_360.png"},
-    "스페인": {"name": "로드리", "photo": "https://cdn.sofifa.net/players/231/866/24_360.png"},
-    "포르투갈": {"name": "크리스티아누 호날두", "photo": "https://cdn.sofifa.net/players/020/801/24_360.png"},
-    "벨기에": {"name": "케빈 더 브라위너", "photo": "https://cdn.sofifa.net/players/192/985/24_360.png"},
-    "네덜란드": {"name": "버질 반 다이크", "photo": "https://cdn.sofifa.net/players/203/376/24_360.png"},
-    "크로아티아": {"name": "루카 모드리치", "photo": "https://cdn.sofifa.net/players/177/003/24_360.png"},
-    "오스트리아": {"name": "다비드 알라바", "photo": "https://cdn.sofifa.net/players/197/445/24_360.png"},
-    "노르웨이": {"name": "엘링 홀란드", "photo": "https://cdn.sofifa.net/players/239/085/24_360.png"},
-    "스코틀랜드": {"name": "스콧 맥토미니", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p195851.png"},
-    "스위스": {"name": "그라니트 자카", "photo": "https://cdn.sofifa.net/players/198/219/24_360.png"},
+    # [유럽]
+    "잉글랜드": {
+        "name": "해리 케인",
+        "photo": "https://cdn.sofifa.net/players/202/126/24_360.png",
+        "club": "바이에른 뮌헨 (독일)"
+    },
+    "프랑스": {
+        "name": "킬리안 음바페",
+        "photo": "https://cdn.sofifa.net/players/231/747/24_360.png",
+        "club": "레알 마드리드 (스페인)"
+    },
+    "독일": {
+        "name": "자말 무시알라",
+        "photo": "https://cdn.sofifa.net/players/256/790/24_360.png",
+        "club": "바이에른 뮌헨 (독일)"
+    },
+    "스페인": {
+        "name": "로드리",
+        "photo": "https://cdn.sofifa.net/players/231/866/24_360.png",
+        "club": "맨체스터 시티 (잉글랜드)"
+    },
+    "포르투갈": {
+        "name": "크리스티아누 호날두",
+        "photo": "https://cdn.sofifa.net/players/020/801/24_360.png",
+        "club": "알 나스르 FC (사우디아라비아)"
+    },
+    "벨기에": {
+        "name": "케빈 더 브라위너",
+        "photo": "https://cdn.sofifa.net/players/192/985/24_360.png",
+        "club": "맨체스터 시티 (잉글랜드)"
+    },
+    "네덜란드": {
+        "name": "버질 반 다이크",
+        "photo": "https://cdn.sofifa.net/players/203/376/24_360.png",
+        "club": "리버풀 FC (잉글랜드)"
+    },
+    "크로아티아": {
+        "name": "루카 모드리치",
+        "photo": "https://cdn.sofifa.net/players/177/003/24_360.png",
+        "club": "레알 마드리드 (스페인)"
+    },
+    "오스트리아": {
+        "name": "다비드 알라바",
+        "photo": "https://cdn.sofifa.net/players/197/445/24_360.png",
+        "club": "레알 마드리드 (스페인)"
+    },
+    "노르웨이": {
+        "name": "엘링 홀란드",
+        "photo": "https://cdn.sofifa.net/players/239/085/24_360.png",
+        "club": "맨체스터 시티 (잉글랜드)"
+    },
+    "스코틀랜드": {
+        "name": "스콧 맥토미니",
+        "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p195851.png",
+        "club": "SSC 나폴리 (이탈리아)"
+    },
+    "스위스": {
+        "name": "그라니트 자카",
+        "photo": "https://cdn.sofifa.net/players/198/219/24_360.png",
+        "club": "선덜랜드 AFC (잉글랜드)"
+    },
 
     # [오세아니아]
-    "뉴질랜드": {"name": "크리스 우드", "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p54469.png"},
+    "뉴질랜드": {
+        "name": "크리스 우드",
+        "photo": "https://resources.premierleague.com/premierleague/photos/players/250x250/p54469.png",
+        "club": "노팅엄 포레스트 (잉글랜드)"
+    },
 }
-
 target_team = st.selectbox("어떤 팀의 에이스가 궁금해?", df["국가"].unique())
 
 if target_team in ace_players:
@@ -303,6 +474,8 @@ if target_team in ace_players:
 
     with c2:
         st.subheader(f"이름: {player['name']}")
+        st.markdown(f"##소속 클럽: {player['club']}")
+        
         st.markdown(f"#### **{target_team}**의 운명을 짊어진 에이스야!")
         
 else:
@@ -366,6 +539,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
