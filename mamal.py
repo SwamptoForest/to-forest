@@ -473,8 +473,8 @@ if target_team in ace_players:
         # -------------------------------------------------------
 
     with c2:
-        st.subheader(f"이름: {player['name']}")
-        st.markdown(f"## 소속 클럽: {player['club']}") # ##로 글자 크기 조절할 때는 띄어쓰기를 꼭 해야함.
+        st.markdown(f"# :red[이름]: {player['name']}")
+        st.markdown(f"## :blue[소속 클럽]: {player['club']}") # ##로 글자 크기 조절할 때는 띄어쓰기를 꼭 해야함.
         
         st.markdown(f"#### **{target_team}**의 운명을 짊어진 에이스야!")
         
@@ -539,6 +539,7 @@ if st.button('축구 안좋아할 경우 누르기'):
     st.toast('게')
     st.toast('쉽')
     st.toast('아')
+
 
 
 
